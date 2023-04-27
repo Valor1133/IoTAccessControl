@@ -1,0 +1,24 @@
+{
+  "name": "iot-blockchain-demo",
+  "version": "1.0.0",
+  "description": "First implementation of enhanced security in IoT using Blockchain",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-node": "npx hardhat node",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat deploy"
+  },
+  "author": "Salman Dabbakuti",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "ethers": "5.5.4",
+    "hardhat": "2.9.2",
+    "pip": "^0.0.1",
+    "yarn": "1.22.18"
+  },
+  "dependencies": {
+    "solidity": "^0.0.1"
+  }
+}
