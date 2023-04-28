@@ -4,6 +4,10 @@ from web3 import Web3, HTTPProvider
 from RPiSim.GPIO import GPIO
 from flask import Flask, render_template
 from cryptography.fernet import Fernet
+import paramiko
+import os
+import sys
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 pinList = [14, 15, 18, 23, 24, 25, 8,7, 12, 16, 20, 21, 2, 3, 4, 17, 27, 22, 10, 9, 11, 5, 6, 13, 19, 26]
@@ -131,6 +135,20 @@ encrypted = fernet.encrypt(original)
 # opening the file in write mode and
 # writing the encrypted data
 print(encrypted)
+
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.connect(hostname='192.168.85.95', username='valor13', password='123')
+
+answer = input("Do you want to transfer files? Enter yes or no: ")
+
+sftp = client.open_sftp()
+local_path = 'D:/modiji'
+remote_path = '/home/pi/'
+sftp.put(local_path, remote_path)
+sftp.close()
+
+client.close()
 
 if __name__ == '__main__':
     app.run(port=8000, host='localhost')
